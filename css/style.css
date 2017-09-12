@@ -1,0 +1,106 @@
+/*===================================================
+			Colors
+
+Buttons and Icons - #00ff42, #1A936F, #0b882b
+
+Background - #e1dada
+
+===================================================*/
+
+
+/*==================================================
+			Core CSS
+==================================================*/
+
+body {
+	font-family: 'Lato', monospace, serif, sans-serif;
+	line-height: 2.5em;
+	letter-spacing: 0.2em;
+}
+
+h2 {
+	font-size: 28px;
+	font-weight: 900;
+}
+
+a {
+	color: #00ff42;
+}
+
+a:hover {
+	color: #0b882b;
+}
+
+
+/*==================================================
+			Home CSS
+==================================================*/
+
+#home {
+	height: 100%;
+	background: url(../img/vote.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+#home-content {
+	padding-top: 500px;
+	color: #fff;
+}
+
+#home-content-icon {
+	padding-top: 20px;
+}
+
+
+/*==================================================
+			Login-area CSS
+==================================================*/
+
+#login-access {
+	background: #e1dada;
+	margin: auto;
+	text-align: center;
+	padding: 50px 30px;
+}
+
+#login-form i{
+	color: #0b882b;
+}
+
+.form-element {
+	padding: 30px 10px;
+	display: block;
+}
+
+.form-element label i {
+	padding-right: 40px;
+}
+
+.form-element input {
+	border: 3px solid #0b882b;
+	padding: 10px 20px;
+	border-radius: 3px;
+	background: transparent;
+	width: 30%;
+}
+
+#login-btn {
+	padding-top: 10px;
+	margin-left: auto;
+}
+
+#login-btn button {
+	font-size: 19px;
+	border-color: #0b882b;
+	width: 20%;
+	margin-left: 210px;
+}
+
+#main-footer {
+	text-align: center;
+	line-height: 1.5em !important;
+	font-size: 14px;
+	font-weight: 900;
+}
+
