@@ -85,6 +85,8 @@ a:hover {
 	width: 30%;
 }
 
+.form-element input:focus {outline: none;}
+
 #login-btn {
 	padding-top: 10px;
 	margin-left: auto;
@@ -96,6 +98,8 @@ a:hover {
 	width: 20%;
 	margin-left: 210px;
 }
+
+#login-btn button:focus {outline: none;}
 
 #main-footer {
 	text-align: center;
