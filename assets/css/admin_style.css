@@ -21,15 +21,40 @@ body {
 h2 {
 	font-size: 28px;
 	font-weight: 900;
+	color: #0b882b;
 }
 
 a {
-	color: #00ff42;
+	color: #0b882b;
+
 }
 
 a:hover {
-	color: #0b882b;
+	color: #00ff42;
+	text-decoration: none;
 }
+
+/*==================================================
+			Navigation bar
+==================================================*/
+
+#admin_nav {
+	background-color: #ffffff;
+	font-weight: 900;
+}
+
+#admin_menu li {
+	display: inline;
+}
+
+#admin_menu li:active {background-color: #e1dada;}
+
+#logout_btn {float: right;}
+
+.left {margin-left: 13px;}
+
+#right {padding-right: 10px;}
+
 
 
 /*==================================================
@@ -38,9 +63,10 @@ a:hover {
 
 #home {
 	height: 100%;
-	background: url(../img/vote.jpg);
+	background: url(../img/admin_bg.png);
 	background-size: cover;
-	background-repeat: no-repeat;
+	background-repeat: repeat;
+	background-attachment: fixed;
 }
 
 #home-content {
@@ -108,3 +134,30 @@ a:hover {
 	font-weight: 900;
 }
 
+/*==================================================
+			Content 
+==================================================*/
+
+#content {
+	background-color: #e1dada;
+	height: 100%;
+}
+
+.container {padding-top: 2%;}
+
+/*==================================================
+			Dashboard
+==================================================*/
+
+#welcome_text {
+	text-align: center;
+	padding: 20% 0 0 0;
+	font-weight: 400;
+}
+
+.btn {border-color: #0b882b;}
+
+#register_info {
+	text-align: center;
+	color: #00ff42;
+}
