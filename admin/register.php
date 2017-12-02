@@ -55,6 +55,9 @@ include("../functions/db_fun.inc.php");
 
 			// Insert data into the database
 			register_voter($photo_name,$lastname, $firstname, $dob, $email, $street_address, $city);
+
+			// Send new voter email with a link to generate the username and password automatically
+			// code goes here
 		}
 	}	
 ?>
