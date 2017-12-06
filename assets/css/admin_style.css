@@ -12,6 +12,8 @@ Background - #e1dada
 			Core CSS
 ==================================================*/
 
+html {width: 100%}
+
 body {
 	font-family: 'Lato', monospace, serif, sans-serif;
 	line-height: 2.5em;
@@ -141,6 +143,7 @@ a:hover {
 #content {
 	background-color: #e1dada;
 	height: 100%;
+	overflow: scroll;
 }
 
 .container {padding-top: 2%;}
@@ -161,3 +164,7 @@ a:hover {
 	text-align: center;
 	color: #00ff42;
 }
+
+/*==================================================
+			Creating Votes
+==================================================*/

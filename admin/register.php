@@ -51,13 +51,13 @@ include("../functions/db_fun.inc.php");
 			$info[] = "Registration successful, check your inbox for further instructions";
 
 			// move the photo the media/images directory
-			move_uploaded_file($photo_temp, "../media/images/" .$photo_name);
+			move_uploaded_file($photo_temp, "../media/images/voters/" .$photo_name);
 
 			// Insert data into the database
 			register_voter($photo_name,$lastname, $firstname, $dob, $email, $street_address, $city);
 
 			// Send new voter email with a link to generate the username and password automatically
-			// code goes here
+			// After the instructions have been followed successfully, the verification status is changed to 1 (true)
 		}
 	}	
 ?>
@@ -73,7 +73,6 @@ include("../functions/db_fun.inc.php");
 		?></h2></div>
 		<div class="container">
 			<div class="row">
-				<div class="col-md-12">
 					<div id="register_form">
 						<form class="form-horizontal" action="register.php" method="post" enctype="multipart/form-data">
 							<div class="form-group">
@@ -117,7 +116,6 @@ include("../functions/db_fun.inc.php");
 							</div>
 						</form>
 					</div>
-				</div>
 			</div>
 		</div>
 	</section>

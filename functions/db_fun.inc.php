@@ -1,7 +1,7 @@
 <?php 
-// Database query functions
+	// Database query functions
 
-// 1. Login query
+	// 1. Login query
 function login_checker($table_name, $user, $pass) {
 	global $db;
 	try
@@ -20,7 +20,7 @@ function login_checker($table_name, $user, $pass) {
 	return $result->fetch(PDO::FETCH_ASSOC); 
 }
 
-// 2. Registeration of voters
+	// 2. Registeration of voters
 function register_voter($photo_name,$lastname, $firstname, $dob, $email_address, $street_address, $city) {
 	global $db;
 
@@ -59,6 +59,69 @@ function register_voter($photo_name,$lastname, $firstname, $dob, $email_address,
 		echo $msg;
 		exit();
 	}
+	// Populate the verification table with the voter id and verification status
+}
+
+ 	
+ 	// 3. Creating of voters
+function create_vote($category, $party, $photo_name, $candidate_name, $propaganda, $year) {
+	
+	global $db;
+
+	// First populate the vote table with category name, id and year
+	try
+	{
+		$query = "INSERT INTO vote(category, year) ";
+		$query .= "VALUES(:category, :year)";
+		$s = $db->prepare($query);
+		$s->bindValue(':category', $category);
+		$s->bindValue(':year', $year);
+		$s->execute();
+		$id = $db->lastInsertId();
+	}
+	catch (PDOException $e) {
+		$msg = "There was an error with this vote query: " .$e->getMessage();
+		echo $msg;
+		exit();
+	}
+
+	// Then populate the polls table with the category id, candidate name, propaganda, party name
+	try
+	{
+		$query = "INSERT INTO polls";
+		$query .= "(category_id, party, photo_name, candidate_name, propaganda) ";
+		$query .= "VALUES('$id', :party, :photo_name, :candidate_name, :propaganda)";
+		$s = $db->prepare($query);
+		$s->bindValue(':party', $party);
+		$s->bindValue(':photo_name', $photo_name);
+		$s->bindValue(':candidate_name', $candidate_name);
+		$s->bindValue(':propaganda', $propaganda);
+		$s->execute();
+	}
+	catch (PDOException $e) {
+		$msg = "There was an error with this polls query: " .$e->getMessage();
+		echo $msg;
+		exit();
+	}
+}
+
+	// 4. Retrieving created votes
+function retrieve_votes() {
+		global $db;
+		try 
+		{
+			$query = "SELECT photo_name, category, party, candidate_name, propaganda ";
+			$query .= "FROM polls INNER JOIN vote ";
+			$query .= "WHERE category_id=vote.id";
+			$result = $db->query($query);
+		}
+		catch (PDOException $e)
+		{
+			$msg = "There was an error retrieving polls data from database: " .$e->getMessage();
+			echo $msg;
+			exit();
+		}
+		return $result->fetchAll(PDO::FETCH_ASSOC);
 }
 
 ?>
