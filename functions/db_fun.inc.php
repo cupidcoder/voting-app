@@ -59,6 +59,9 @@ function register_voter($photo_name,$lastname, $firstname, $dob, $email_address,
 		echo $msg;
 		exit();
 	}
+	
+	// Send new voter email with a link to generate the username and password automatically
+	// After the instructions have been followed successfully, the verification status is changed to 1 (true)
 	// Populate the verification table with the voter id and verification status
 }
 
@@ -68,24 +71,55 @@ function create_vote($category, $party, $photo_name, $candidate_name, $propagand
 	
 	global $db;
 
-	// First populate the vote table with category name, id and year
-	try
+	/*
+	THERE'S A SERIOUS BUG HERE
+	identical category names would have unique IDs
+	To resolve this, first check if the particular category is present in the vote table; if it's not perform creation query, if it is, do something else
+
+	*/
+	
+	// Check if category is present in the vote table
+	try 
 	{
-		$query = "INSERT INTO vote(category, year) ";
-		$query .= "VALUES(:category, :year)";
-		$s = $db->prepare($query);
-		$s->bindValue(':category', $category);
-		$s->bindValue(':year', $year);
-		$s->execute();
-		$id = $db->lastInsertId();
-	}
+		$query = "SELECT id FROM vote ";
+		$query .= "WHERE category='$category'";
+		$result = $db->query($query);
+	} 
+	
 	catch (PDOException $e) {
-		$msg = "There was an error with this vote query: " .$e->getMessage();
+		$msg = "There was an error with category-check query with the error: " .$e->getMessage();
 		echo $msg;
 		exit();
 	}
-
+	
+	$id = $result->fetch(PDO::FETCH_ASSOC);
+	if ($id) // If an id is present
+	{
+		$id = $id['id']; // Use the same id to populate the polls table
+	}
+	
+	else 
+	{
+		// First populate the vote table with category name, id and year
+		try
+		{
+			$query = "INSERT INTO vote(category, year) ";
+			$query .= "VALUES(:category, :year)";
+			$s = $db->prepare($query);
+			$s->bindValue(':category', $category);
+			$s->bindValue(':year', $year);
+			$s->execute();
+			$id = $db->lastInsertId();
+		}
+		catch (PDOException $e) {
+			$msg = "There was an error with this vote query: " .$e->getMessage();
+			echo $msg;
+			exit();
+		}
+	}
+	
 	// Then populate the polls table with the category id, candidate name, propaganda, party name
+	
 	try
 	{
 		$query = "INSERT INTO polls";

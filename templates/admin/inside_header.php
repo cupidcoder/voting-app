@@ -1,11 +1,11 @@
 <!-- Navigation bar -->
 	<nav id="admin_nav">
 		<ul id="admin_menu">
-			<a href="create.php" class="left"><li>Create new vote</li></a>
-			<a href="register.php" class="left"><li>Register voter</li></a>
-			<a href="update_biodata.php" class="left"><li>Update voter biodata</li></a>
-			<a href="update.php" class="left"><li>Update voter credentials</li></a>
-			<a href="results.php" class="left"><li>View results</li></a>
-			<a href="logout.php" id="right"><li id="logout_btn">Logout</li></a>
+			<li><a href="create.php" class="left">Create new vote</a></li>
+			<li><a href="register.php" class="left">Register voter</a></li>
+			<li><a href="update_biodata.php" class="left">Update voter biodata</a></li>
+			<li><a href="update.php" class="left">Update voter credentials</a></li>
+			<li><a href="results.php" class="left">View results</a></li>
+			<li id="logout_btn"><a href="logout.php" id="right">Logout</a></li>
 		</ul>
 	</nav>
