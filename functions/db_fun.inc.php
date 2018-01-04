@@ -1,5 +1,6 @@
 <?php 
 	// Database query functions
+	include_once("fun.inc.php");
 
 	// 1. Login query
 function login_checker($table_name, $user, $pass) {
@@ -20,7 +21,7 @@ function login_checker($table_name, $user, $pass) {
 	return $result->fetch(PDO::FETCH_ASSOC); 
 }
 
-	// 2. Registeration of voters
+	// 2. Registration of voters
 function register_voter($photo_name,$lastname, $firstname, $dob, $email_address, $street_address, $city) {
 	global $db;
 
@@ -60,9 +61,22 @@ function register_voter($photo_name,$lastname, $firstname, $dob, $email_address,
 		exit();
 	}
 	
+	// Populate the verification table
+	try 
+	{
+		$query = "INSERT INTO verification";
+		$query .= "(voter_id, verified) ";
+		$query .= "VALUES('$id', 0)";
+		$result = $db->exec($query);
+	}
+	catch (PDOException $e) {
+		$msg = "There was an error inserting value into verification table with error: " .$e->getMessage();
+		echo $msg;
+		exit();
+	}
+	
 	// Send new voter email with a link to generate the username and password automatically
-	// After the instructions have been followed successfully, the verification status is changed to 1 (true)
-	// Populate the verification table with the voter id and verification status
+	send_new_mail($id, $email_address, $firstname, $lastname);
 }
 
  	
@@ -157,5 +171,7 @@ function retrieve_votes() {
 		}
 		return $result->fetchAll(PDO::FETCH_ASSOC);
 }
+
+	// 5. Retrieving firstname and second 
 
 ?>
