@@ -3,9 +3,9 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require '../includes/mailer/Exception.php';
-require '../includes/mailer/PHPMailer.php';
-require '../includes/mailer/SMTP.php';
+require($_SERVER['DOCUMENT_ROOT'] . '/voting-app/includes/mailer/Exception.php');
+require($_SERVER['DOCUMENT_ROOT'] . '/voting-app/includes/mailer/PHPMailer.php');
+require($_SERVER['DOCUMENT_ROOT'] . '/voting-app/includes/mailer/SMTP.php');
 
 // 1. Function for redirecting
 function redirect_url($url){
@@ -24,7 +24,8 @@ function is_admin_logged_in(){
 function is_voter_logged_in(){
 	if (isset($_SESSION['voter'])){
 		$username = $_SESSION['voter'];
-	} else {redirect_url("login.php");}
+		redirect_url("dashboard.php");
+	}
 }
 
 // 4. General function for checking if user is logged in

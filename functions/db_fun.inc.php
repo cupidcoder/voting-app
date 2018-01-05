@@ -3,13 +3,13 @@
 	include_once("fun.inc.php");
 
 	// 1. Login query
-function login_checker($table_name, $user, $pass) {
+function login_checker($table_name, $user, $pass, $column='username') {
 	global $db;
 	try
 	{
-		$query = "SELECT COUNT(username), COUNT(password) ";
+		$query = "SELECT COUNT($column), COUNT(password) ";
 		$query .= "FROM $table_name WHERE ";
-		$query .= "username = '$user' AND password = '$pass'";
+		$query .= "$column = '$user' AND password = '$pass'";
 		$result = $db->query($query);
 	}
 	catch (PDOException $e)
