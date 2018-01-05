@@ -172,6 +172,21 @@ function retrieve_votes() {
 		return $result->fetchAll(PDO::FETCH_ASSOC);
 }
 
-	// 5. Retrieving firstname and second 
+	// 5. Retrieving Voter's for dashboard display
+function retrieve_voters($username) {
+	global $db;
+	try {
+		$query = "SELECT photo_name, firstname ";
+		$query .= "FROM biodata INNER JOIN voters ";
+		$query .= "WHERE biodata.voter_id=voters.id ";
+		$query .= "AND voters.identification_number='$username'";
+		$result = $db->query($query);
+	} catch (PDOException $e) {
+		$msg = "There was an error: " . $e->getMessage() . ", with retrieving voter information";
+		echo $msg;
+		exit();
+	}
+	return $result->fetch(PDO::FETCH_ASSOC);
+}
 
 ?>
