@@ -188,5 +188,35 @@ function retrieve_voters($username) {
 	}
 	return $result->fetch(PDO::FETCH_ASSOC);
 }
+    // 6. Inserting feedback issues to the database
+   function insert_issue($username, $feedback) {
+   	global $db;
+   	// Retrieve id from voters table
+   	try {
+   		$query = "SELECT id from voters ";
+   		$query .= "WHERE identification_number='$username'";
+   		$result = $db->query($query);
+   	} 
+   	catch (PDOException $e) {
+   		$msg = "There an error, " .$e->getMessage() . "retrieving id from voters";
+   		echo  $msg;
+   		exit();
+   	}
+	   	$id = $result->fetch(PDO::FETCH_ASSOC);
+	   	$id = $id['id'];
+	   	
+   	// Populate feedback table with voter_id and issue
+   	try {
+   		$query = "INSERT INTO feedback";
+   		$query .= "(voter_id, issues) ";
+   		$query .= "VALUES('$id', '$feedback')";
+   		$result = $db->exec($query);
+   	}
+   	catch(PDOException $e) {
+   		$msg = "There was an error, " .$e->getMessage() . "inserting issue into database";
+   		echo $msg;
+   		exit();
+   	}
+   }
 
 ?>
