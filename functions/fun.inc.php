@@ -3,9 +3,9 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require($_SERVER['DOCUMENT_ROOT'] . '/voting-app/includes/mailer/Exception.php');
-require($_SERVER['DOCUMENT_ROOT'] . '/voting-app/includes/mailer/PHPMailer.php');
-require($_SERVER['DOCUMENT_ROOT'] . '/voting-app/includes/mailer/SMTP.php');
+require($_SERVER['DOCUMENT_ROOT'] . '/includes/mailer/Exception.php');
+require($_SERVER['DOCUMENT_ROOT'] . '/includes/mailer/PHPMailer.php');
+require($_SERVER['DOCUMENT_ROOT'] . '/includes/mailer/SMTP.php');
 
 // 1. Function for redirecting
 function redirect_url($url){
@@ -52,14 +52,7 @@ function send_new_mail($id,$email_address, $firstname, $lastname) {
 		//Recipients
 		$mail->setFrom('no-reply@voting-app.chukume.name.ng', 'E-Voting App');
 		$mail->addAddress($email_address, $firstname, $lastname);     // Add a recipient
-		//$mail->addAddress('ellen@example.com');               // Name is optional
-		//$mail->addReplyTo('info@example.com', 'Information');
-		//$mail->addCC('cc@example.com');
-		//$mail->addBCC('bcc@example.com');
-		
-		//Attachments
-		//$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
-		//$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+
 		
 		$link = "http://voting-app.chukume.name.ng/admin/verify.php?id=$id&fname=$firstname&lname=$lastname";
 
@@ -70,7 +63,6 @@ function send_new_mail($id,$email_address, $firstname, $lastname) {
 		$mail->Body   .= "<strong>Please open link in a browser</strong><br><br>";
 		$mail->Body   .= "<a href='$link'>Verify your account</a><br><br>";
 		$mail->Body   .= "<i>Ensure you secure your Voter Identification Number and Password at all times</i>";
-		//$mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 		
 		$mail->send();
 		//echo 'Message has been sent';
