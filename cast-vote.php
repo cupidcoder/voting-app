@@ -43,19 +43,52 @@ is_logged_in('voter');
 		if (!empty(retrieve_vote_categories()) && !vote_casted_status()) { ?>
 				
 				<div class="container">
+					<h3 class="text-center">Cast Your Vote Below</h3>
 				<?php 
 					$vote_categories = retrieve_vote_categories(); // Retrieve vote categories from DB
-					var_dump($vote_categories);
-				?>
-				<!-- Div per poll -->
-					<div class="row"> 
+					forEach($vote_categories as $index => $poll_category) { ?>
+					<div class="row">
 						<div class="col-md-12">
-							<table class="table">
-	  							
-							</table>
-						</div>
+							<table class="table table-hover">
+							<caption><strong><?php echo $poll_category['category'];?></strong></caption>
+								<thead>
+									<tr>
+		  								<th></th>
+		  								<th><strong>Photo</strong></th>
+		  								<th><strong>Party</strong></th>
+		  								<th><strong>Candidate Name</strong></th>
+		  								<th><strong>Propaganda</strong></th>
+		  								<th><strong>Your choice</strong></th>
+		  							</tr>
+		  						</thead>
+					<?php 
+						$polls = retrieve_polls($poll_category['id']);
+						foreach ($polls as $index => $poll) { ?>
+								<tbody>
+									<tr>
+										<td><input type="hidden" name="poll_id" value="<?php echo $poll['id'];?>"></td>
+										<td>
+											<img height="150px" width="150px" class="img-responsive img-circle" alt="candidate photo" src="media/images/candidates/<?php echo $poll['photo_name'];?>">
+										</td>
+										<td><?php echo $poll['party'];?></td>
+										<td><?php echo $poll['candidate_name'];?></td>
+										<td><?php echo $poll['propaganda'];?></td>
+										<td>
+											<input type="radio" name="choice">
+										</td>
+									</tr>
+								</tbody>				
+					<?php 
+						}
+					?>
+						</table>
 					</div>
 				</div>
+				<?php		
+					}
+				?>
+				
+				</div> <!-- End of Container -->
 		<?php 
 			}
 		?>
