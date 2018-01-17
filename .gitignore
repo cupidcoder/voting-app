@@ -3,3 +3,6 @@
 
 # PHP Eclipse IDE file
 .project
+
+# PHP storm IDE file
+.idea/

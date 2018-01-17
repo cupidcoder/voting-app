@@ -30,7 +30,7 @@
 		{
 			$query = "INSERT INTO voters(id) ";
 			$query .= "VALUES(null)";
-			$result = $db->exec($query);
+			$db->exec($query);
 			$id = $db->lastInsertId();
 		}
 		catch (PDOException $e) {
@@ -67,7 +67,7 @@
 			$query = "INSERT INTO verification";
 			$query .= "(voter_id, verified) ";
 			$query .= "VALUES('$id', 0)";
-			$result = $db->exec($query);
+			$db->exec($query);
 		}
 		catch (PDOException $e) {
 			$msg = "There was an error inserting value into verification table with error: " .$e->getMessage();
@@ -83,7 +83,7 @@
 		try {
 			$query = "INSERT INTO vote_casted_status(voter_id, voting_status) ";
 			$query .= "VALUES('$id', 0)";
-			$result = $db->exec($query);
+			$db->exec($query);
 		} 
 		
 		catch (PDOException $e) {
@@ -97,7 +97,7 @@
 	}
 
  	
- 	// 3. Creating of votes
+ 	// 3a. Creating of votes
 	function create_vote($category, $party, $photo_name, $candidate_name, $propaganda, $year) {
 		
 		global $db;
@@ -174,9 +174,9 @@
 	
 	// Populate polls_count table with primary id from polls table
 	try {
-		$query = "INSERT INTO polls_count(poll_id) ";
-		$query .= "VALUES('$id')";
-		$result = $db->exec($query);
+		$query = "INSERT INTO polls_count(poll_id, count) ";
+		$query .= "VALUES('$id', 0)";
+		$db->exec($query);
 	} 
 	catch (PDOException $e) {
 		$msg = "Error: " . $e->getMessage() . ", populating polls_count with poll id";
@@ -185,6 +185,32 @@
 	}
 }
 
+    // 3b. Archiving all votes
+    function archive_all_votes() {
+		// first change polling status of votes to 1 (indicating concluded)
+		global $db;
+		try {
+			$query = "UPDATE vote ";
+			$query .= "SET polling_status='1' WHERE true";
+			$db->exec($query);
+		} catch (PDOException $e) {
+			$msg = "Error: " . $e->getMessage() . ", while archiving votes";
+			echo $msg;
+			exit();
+		}
+
+		// Then change vote_casted_status of all voters to 0 (indicating fresh polling campaign
+		try {
+			$query = "UPDATE vote_casted_status ";
+			$query .= "SET voting_status='0' WHERE true";
+			$db->exec($query);
+		} catch (PDOException $e) {
+			$msg = "Error: " . $e->getMessage() . ", while resetting voting status of registered voters";
+			echo $msg;
+			exit();
+		}
+	}
+
 	// 4. Retrieving created votes
 	function retrieve_votes() {
 			global $db;
@@ -192,7 +218,7 @@
 			{
 				$query = "SELECT photo_name, category, party, candidate_name, propaganda ";
 				$query .= "FROM polls INNER JOIN vote ";
-				$query .= "WHERE category_id=vote.id";
+				$query .= "WHERE category_id=vote.id AND polling_status='0'";
 				$result = $db->query($query);
 			}
 			catch (PDOException $e)
@@ -264,7 +290,8 @@
    function retrieve_vote_categories() {
    	global $db;
    	try {
-   		$query = "SELECT * FROM vote";
+   		$query = "SELECT * FROM vote ";
+		$query .= "WHERE polling_status='0'";
    		$result = $db->query($query);
    	} 
    
@@ -326,5 +353,36 @@
    	$status = $result->fetch(PDO::FETCH_ASSOC);
    	if ($status['voting_status'] === '0') return false;
    	else {return true;}
+   }
+
+   // 10. Vote Casting status changer
+   function set_vote_casted() {
+	   global $db;
+	   $id = retrieve_voter_id();
+	   try{
+		   $query = "UPDATE vote_casted_status ";
+		   $query .= "SET voting_status='1' ";
+		   $query .= "WHERE voter_id='$id'";
+		   $db->exec($query);
+	   } catch (PDOException $e) {
+		   $msg = "Error: " .$e->getMessage() . ", setting vote casted status";
+		   echo $msg;
+		   exit();
+	   }
+   }
+   // 11. Vote Counter
+   function vote_counter($poll_id) {
+	   global $db;
+	   try {
+		   $query = "UPDATE polls_count ";
+		   $query .= "SET count=count+1 ";
+		   $query .= "WHERE poll_id='$poll_id'";
+		   $result = $db->exec($query);
+	   }
+	   catch (PDOException $e) {
+		   $msg = "Error: " .$e->getMessage() . ", while performing vote count";
+		   echo $msg;
+		   exit();
+	   }
    }
 ?>

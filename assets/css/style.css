@@ -142,5 +142,18 @@ a:hover {
 }
 
 .help-text {
-	border-bottom: 1px solid #0b882b;
+	border-bottom: 1px solid #0b882b !important;
+}
+
+/*==================================================
+			Cast vote
+==================================================*/
+
+table, th {
+	border-bottom: 1px solid #0b882b !important;
+}
+
+.info-text {
+	text-align: center;
+	font-size: 12px;
 }

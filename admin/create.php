@@ -113,13 +113,22 @@ is_logged_in('admin_user');
 				<hr>
 				<h2 class="text-center">Created Votes</h2>
 				<br>
-				<?php // Process retrieval of created votes 
+				<?php // Process retrieval of created votes
+				    // Does admin want the votes archived?
+				    if (isset($_GET['archive'])) {
+						archive_all_votes();
+					}
 					
-					// First check if there are any votes
+					// Then check if there are any votes
 					if (empty(retrieve_votes())) {
-						echo "<p class='text-center'>No currently active votes</p>";
-					} else {
-						$votes = retrieve_votes();
+						echo "<p class='text-center'>No currently active poll</p>";
+					} else { ?>
+						<div class="row">
+							<div class="col-xs-12">
+								<p class="text-center"><a href="?archive" class="btn btn-default">Archive all</a></p>
+							</div>
+						</div>
+				<?php		$votes = retrieve_votes();
 						for ($i=0; $i < count($votes); $i++) {
 					
 				?>	
@@ -141,9 +150,9 @@ is_logged_in('admin_user');
 								<div class="col-xs-2">
 									<?php echo $votes[$i]['propaganda']; ?>
 								</div>
-								<div class="col-xs-2">
+								<!--<div class="col-xs-2">
 								    <button type="submit" class="btn btn-default">archive</button>
-								</div>
+								</div>-->
 
 							</div>
 							<br>
@@ -152,7 +161,6 @@ is_logged_in('admin_user');
 				}
 				?>
 		</div>	<!-- End of Container class-->
-		
 		<!-- End of placeholder for retrieving created votes from the database -->
 	</section>
 	<div style="clear: both;"> </div>
