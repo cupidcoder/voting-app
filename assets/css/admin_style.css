@@ -12,12 +12,20 @@ Background - #e1dada
 			Core CSS
 ==================================================*/
 
-html {width: 100%}
+* {
+	box-sizing: border-box;
+}
+
+html {
+	background-color: #e1dada;
+}
 
 body {
+	width: 1350px;
 	font-family: 'Lato', monospace, serif, sans-serif;
 	line-height: 2.5em;
 	letter-spacing: 0.2em;
+	position: relative;
 }
 
 h2 {
@@ -147,7 +155,7 @@ a:hover {
 #content {
 	background-color: #e1dada;
 	height: 100%;
-	overflow: scroll;
+	overflow: hidden;
 }
 
 .container {padding-top: 2%;}
