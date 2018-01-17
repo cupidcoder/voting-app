@@ -11,4 +11,3 @@ is_admin_logged_in();
 
 // ..if no, redirect to login.php
 redirect_url("login.php");
- ?>
