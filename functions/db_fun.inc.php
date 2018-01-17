@@ -377,12 +377,31 @@
 		   $query = "UPDATE polls_count ";
 		   $query .= "SET count=count+1 ";
 		   $query .= "WHERE poll_id='$poll_id'";
-		   $result = $db->exec($query);
+		   $db->exec($query);
 	   }
 	   catch (PDOException $e) {
 		   $msg = "Error: " .$e->getMessage() . ", while performing vote count";
 		   echo $msg;
 		   exit();
 	   }
+   }
+
+   // 12. Voting Results query
+   function retrieve_results_per_category($category_id) {
+	   global $db;
+	   try {
+		   $query = "SELECT party, photo_name, candidate_name, count ";
+		   $query .= "FROM polls INNER JOIN polls_count ";
+		   $query .= "WHERE polls.category_id='$category_id' ";
+		   $query .= "AND polls.id=polls_count.poll_id ";
+		   $query .= "ORDER BY count DESC";
+		   $result = $db->query($query);
+
+	   } catch(PDOException $e) {
+		   $msg = "Error: " . $e->getMessage() . ", retrieving votes";
+		   echo $msg;
+		   exit();
+	   }
+	   return $result->fetchAll(PDO::FETCH_ASSOC);
    }
 ?>

@@ -54,7 +54,6 @@ is_logged_in('voter');
 							<caption class="text-center"><strong><?php echo $poll_category['category'];?></strong>(<?php echo $poll_category['year'];?>)</caption>
 								<thead>
 									<tr>
-		  								<th></th>
 		  								<th><strong>Photo</strong></th>
 		  								<th><strong>Party</strong></th>
 		  								<th><strong>Candidate Name</strong></th>
