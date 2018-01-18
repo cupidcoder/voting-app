@@ -1,3 +1,3 @@
 <?php
-include("../functions/fun.inc.php");
+include("fun.inc.php");
 redirect_url('../');

@@ -112,14 +112,11 @@ is_logged_in('admin_user');
 			<!-- Section for created votes -->
 				<hr>
 				<h2 class="text-center">Created Votes</h2>
-				<br>
 				<?php // Process retrieval of created votes
 				    // Does admin want the votes archived?
 				    if (isset($_GET['archive'])) {
 						archive_all_votes();
-					}
-					
-					// Then check if there are any votes
+					}// Then check if there are any votes
 					if (empty(retrieve_votes())) {
 						echo "<p class='text-center'>No currently active poll</p>";
 					} else { ?>
@@ -150,10 +147,6 @@ is_logged_in('admin_user');
 								<div class="col-xs-2">
 									<?php echo $votes[$i]['propaganda']; ?>
 								</div>
-								<!--<div class="col-xs-2">
-								    <button type="submit" class="btn btn-default">archive</button>
-								</div>-->
-
 							</div>
 							<br>
 				<?php				
@@ -163,5 +156,4 @@ is_logged_in('admin_user');
 		</div>	<!-- End of Container class-->
 		<!-- End of placeholder for retrieving created votes from the database -->
 	</section>
-	<div style="clear: both;"> </div>
 <?php include("../templates/admin/footer.php"); ?>

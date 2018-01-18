@@ -118,6 +118,7 @@ a:hover {
 #login-btn button:focus {outline: none;}
 
 #main-footer {
+	background-color: #47ff11;
 	text-align: center;
 	line-height: 1.5em !important;
 	font-size: 14px;
