@@ -179,5 +179,5 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* All the wonderful authors of responses to questions on Stack Overflow
+* All the wonderful authors of responses to questions asked on Stack Overflow
 * My encouraging and motivating developer friends and communities
