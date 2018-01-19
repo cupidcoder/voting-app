@@ -45,10 +45,13 @@ Next, is the admins table which holds the login information of all admins
 
 ```
 CREATE TABLE admins (
-  id int(3) NOT NULL,
+  id int(3) NOT NULL AUTO_INCREMENT,
   username varchar(16) NOT NULL,
   password char(32) NOT NULL,
-  email_address varchar(50) NOT NULL
+  email_address varchar(50) NOT NULL,
+  PRIMARY KEY(id),
+  INDEX(username(10)),
+  INDEX(email_address(20))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ```
 
@@ -63,9 +66,11 @@ Next, is the voters table which holds the login information of all registered vo
 
 ```
 CREATE TABLE voters (
-  id int(11) NOT NULL,
+  id int(11) NOT NULL AUTO_INCREMENT,
   identification_number char(10) DEFAULT NULL,
-  password char(32) DEFAULT NULL
+  password char(32) DEFAULT NULL,
+  PRIMARY KEY(id),
+  INDEX(identification_number(9))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ```
 
@@ -74,7 +79,8 @@ Next, is the verification table which holds the verification status (if voter ha
 ```
 CREATE TABLE verification (
   voter_id int(11) NOT NULL,
-  verified tinyint(4) NOT NULL
+  verified tinyint(4) NOT NULL,
+  INDEX(voter_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ```
 
@@ -89,7 +95,11 @@ CREATE TABLE biodata (
   dob date NOT NULL,
   email_address varchar(50) NOT NULL,
   street_address varchar(50) NOT NULL,
-  city varchar(20) NOT NULL
+  city varchar(20) NOT NULL,
+  INDEX(photo_name(15)),
+  INDEX(lastname(15)),
+  INDEX(firstname(15)),
+  INDEX(email_address(30))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
 ```
 
@@ -97,9 +107,12 @@ Next, is the feedback table which holds recommendation from each registered vote
 
 ```
 CREATE TABLE feedback (
-  id int(11) NOT NULL,
+  id int(11) NOT NULL AUTO_INCREMENT,
   voter_id int(11) NOT NULL,
-  issues text NOT NULL
+  issues text NOT NULL,
+  PRIMARY KEY(id),
+  INDEX(issues(80)),
+  INDEX(voter_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ```
 
@@ -108,7 +121,8 @@ Next, is the vote_casted_status table which holds information about the voting s
 ```
 CREATE TABLE vote_casted_status (
   voter_id int(11) NOT NULL,
-  voting_status tinyint(4) NOT NULL
+  voting_status tinyint(4) NOT NULL,
+  PRIMARY KEY(voter_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ```
 
@@ -116,32 +130,39 @@ Next, is the vote table which holds information about the vote category, year of
 
 ```
 CREATE TABLE vote (
-  id int(11) NOT NULL,
+  id int(11) NOT NULL AUTO_INCREMENT,
   category varchar(30) NOT NULL,
   year year(4) NOT NULL,
-  polling_status tinyint(4) NOT NULL
+  polling_status tinyint(4) NOT NULL,
+  PRIMARY KEY(id),
+  INDEX(category(15))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ```
 
 Next, is the polls table which holds information about each candidate under each poll category (chairman, president e.t.c). The 'category_id' column is a Foreign key to the primary key (id) in the vote table.
 
 ```
-CREATE TABLE `polls` (
-  `id` int(11) NOT NULL,
-  `category_id` int(11) NOT NULL,
-  `party` varchar(25) NOT NULL,
-  `photo_name` varchar(25) NOT NULL,
-  `candidate_name` varchar(50) NOT NULL,
-  `propaganda` tinytext
+CREATE TABLE polls (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  category_id int(11) NOT NULL,
+  party varchar(25) NOT NULL,
+  photo_name varchar(25) NOT NULL,
+  candidate_name varchar(50) NOT NULL,
+  propaganda tinytext,
+  PRIMARY KEY(id),
+  INDEX(party(10)),
+  INDEX(candidate_name(25)),
+  INDEX(photo_name(20))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ```
 
 Finally, the polls_count table which holds information about the number of votes casted per poll. The 'poll_id' is a Foreign key to the primary key (id) in the polls table.
 
 ```
-CREATE TABLE `polls_count` (
-  `poll_id` int(11) NOT NULL,
-  `count` int(11) DEFAULT NULL
+CREATE TABLE polls_count (
+   poll_id int(11) NOT NULL,
+   count int(11) DEFAULT NULL,
+  PRIMARY KEY(poll_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ```
 
@@ -179,5 +200,5 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* All the wonderful authors of responses to questions on Stack Overflow
+* All the wonderful authors of responses to questions asked on Stack Overflow
 * My encouraging and motivating developer friends and communities

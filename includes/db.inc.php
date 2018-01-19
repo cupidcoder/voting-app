@@ -14,4 +14,3 @@ try {
 	echo $msg; // Place holder for error message page
 	exit();
 }
-?>
