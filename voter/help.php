@@ -1,9 +1,9 @@
 <?php 
-include("templates/admin/header.php"); 
-include("includes/db.inc.php");		
-include("templates/inside_header.php");
-include("functions/fun.inc.php");
-include("functions/db_fun.inc.php");
+include("../templates/admin/header.php");
+include("../includes/db.inc.php");
+include("../templates/inside_header.php");
+include("../functions/fun.inc.php");
+include("../functions/db_fun.inc.php");
 
 // Check if user is logged in
 is_logged_in('voter');
@@ -17,7 +17,7 @@ $username = $_SESSION['voter'];
 // Handle feedback form
 if(isset($_POST['submit'])){
 	$feedback = filter_var($_POST['feedback'], FILTER_SANITIZE_STRING);
-	insert_issue($username, $feedback);
+	insert_issue($feedback);
 	$msg = "Thank you for your feedback";
 }
 ?>
@@ -49,4 +49,4 @@ if(isset($_POST['submit'])){
 		</div>
 	</section>
 
-<?php include("templates/footer.php"); ?>
+<?php include("../templates/footer.php"); ?>

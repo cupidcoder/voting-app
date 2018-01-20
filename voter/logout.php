@@ -1,6 +1,6 @@
 <?php 
-include("templates/header.php");
-include("functions/fun.inc.php");
+include("../templates/header.php");
+include("../functions/fun.inc.php");
 // Check if user is logged in
 is_logged_in('voter');
 ?>
@@ -16,4 +16,4 @@ session_destroy();
 		</div>
 	</section>
 
-<?php include("templates/footer.php"); ?>
+<?php include("../templates/footer.php"); ?>

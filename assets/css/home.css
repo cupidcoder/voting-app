@@ -1,0 +1,280 @@
+/******************************
+    Core CSS
+******************************/
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background-color: #e1dada;
+    font-size: 20px;
+    font-family: 'Lato', monospace, sans-serif;
+    color: #333;
+    font-weight: 300;
+    text-rendering: optimizeLegibility;
+}
+
+body {
+    line-height: 1.15;
+}
+
+/******************************
+    REUSABLE COMPONENTS
+ ******************************/
+h2 {
+    text-transform: uppercase;
+    font-size: 200%;
+    font-weight: 300;
+    padding-top: 60px;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+a:link, a:visited, a:hover, a:active {
+    text-decoration: none;
+}
+
+.btn {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #00ff42;
+}
+
+.btn-full:link, .btn-full:visited {
+    background-color: #18AC18;
+    color: #fff;
+}
+
+.btn-full:hover, .btn-full:active {
+    background-color: #00ff42;
+    color: #fff;
+}
+
+.btn-ghost:link, .btn-ghost:visited {
+    background-color: transparent;
+    color: #fff;
+}
+
+.btn-ghost:hover, .btn-ghost:active {
+    background-color: #00ff42;
+    color: #fff;
+}
+
+.icon-big {
+    color: #18AC18;
+    font-weight: 100;
+}
+
+.icon-small {
+    color: #18AC18;
+    font-weight: 100;
+    font-size: 150%;
+}
+/******************************
+    HEADER
+******************************/
+header {
+    background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),url("../img/hero-image.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 100vh;
+    color: #fff;
+}
+
+h1 {
+    font-weight: 100;
+    font-size: 250%;
+    text-transform: uppercase;
+}
+
+.hero-text {
+    width: 80%;
+    position: absolute;
+    top: 60%;
+    left: 10%;
+}
+
+.hero-text a {
+    font-size: 90%;
+    float: left;
+    margin: 10px 10px 0 0;
+}
+
+.main-nav ul {
+    float: right;
+    padding: 20px;
+}
+
+.main-nav p {
+    text-transform: uppercase;
+    padding: 20px 0 0 20px;
+    display: inline-block;
+}
+
+.main-nav ul li {
+    padding-bottom: 3px;
+    display: inline-block;
+    margin-right: 15px;
+    font-size: 120%;
+}
+
+.main-nav ul li:hover, .main-nav ul li:active {
+    border-bottom: 2px solid #00ff42;
+}
+
+.main-nav ul li a {
+    color: #fff;
+}
+
+/******************************
+    PROCESS
+******************************/
+.step {
+    margin-top: 50px;
+}
+
+.step:last-child {
+    margin-bottom: 70px;
+}
+
+.step-text {
+    text-align: justify;
+}
+
+.step-icon {
+    text-align: right;
+    padding-right: 8%;
+}
+
+
+/******************************
+    FAQs
+******************************/
+.section-faq {
+    background-color: #cacaca;
+}
+
+.faq-box {
+    margin-top: 50px;
+    width: 70%;
+    margin-left: 15%;
+    text-align: justify;
+    padding-bottom: 30px;
+    border-bottom: 2px solid #fff;
+}
+
+.faq-box:last-child {
+    border: 0;
+}
+
+.faq-box-question {
+    position: relative;
+    padding: 7px;
+    background-color: #fff;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.faq-box-answer {
+    font-weight: 400;
+    position: relative;
+    padding: 7px;
+    border: 1px solid #18AC18;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.faq-box-question div, .faq-box-answer div {
+    font-style: italic;
+    color: #18AC18;
+    font-weight: 700;
+    font-size: 280%;
+    width: 100px;
+    position: absolute;
+    top: -30px;
+    left: -34px;
+}
+
+/******************************
+    PORTAL
+******************************/
+.section-portal a {
+    margin-top: 50px;
+    padding: 20px;
+    font-size: 100%;
+    margin-left: 20%;
+    text-align: center;
+}
+
+.forgot-password {
+    margin: 80px 0;
+}
+
+.forgot-password input {
+    display: inline-block;
+    margin: 30px 0;
+    width: 70%;
+    border: 1px solid #18AC18;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.forgot-password input:focus {
+    outline: none;
+}
+
+.forgot-password button {
+    font-size: 80%;
+    margin-top: -5px;
+    margin-left: 5px;
+    padding: 12px;
+    background-color: transparent;
+}
+
+.forgot-password button:focus {
+    outline: none;
+}
+
+.forgot-pass-info {
+    display: block;
+    font-size: 80%;
+    text-align: center;
+}
+
+/******************************
+    INFORMATION
+******************************/
+
+.section-information {
+    background-color: #cacaca;
+    padding-bottom: 20px;
+}
+
+.about-us, .contact-us {
+    margin-top: 60px;
+}
+
+.contact-us address, .about-us p {
+    width: 70%;
+    margin-left: 15%;
+}
+
+.contact-us i {
+    padding-left: 8px;
+}
+/******************************
+    FOOTER
+******************************/
+
+#main-footer {
+    background-color: #fff;
+    text-align: center;
+    line-height: 1.5em !important;
+    font-size: 14px;
+    font-weight: 900;
+}

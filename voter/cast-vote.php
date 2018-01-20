@@ -1,9 +1,9 @@
 <?php 
-include("templates/admin/header.php"); 
-include("includes/db.inc.php");		
-include("templates/inside_header.php");
-include("functions/fun.inc.php");
-include("functions/db_fun.inc.php");
+include("../templates/admin/header.php");
+include("../includes/db.inc.php");
+include("../templates/inside_header.php");
+include("../functions/fun.inc.php");
+include("../functions/db_fun.inc.php");
 
 // Check if user is logged in
 is_logged_in('voter');
@@ -63,7 +63,7 @@ is_logged_in('voter');
 		  						</thead>
 					<?php 
 						$polls = retrieve_polls($poll_category['id']);
-						foreach ($polls as $index => $poll) { ?>
+						foreach ($polls as $index_inner => $poll) { ?>
 								<tbody>
 									<tr>
 										<!--<td><input type="hidden" name="poll_id" value="<?php /*echo $poll['id'];*/?>"></td>-->
@@ -110,4 +110,4 @@ if (isset($_POST)) {
     set_vote_casted();
 }
 ?>
-<?php include("templates/footer.php"); ?>
+<?php include("../templates/footer.php"); ?>

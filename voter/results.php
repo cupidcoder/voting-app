@@ -1,9 +1,9 @@
 <?php 
-include("templates/admin/header.php"); 
-include("includes/db.inc.php");		
-include("templates/inside_header.php");
-include("functions/fun.inc.php");
-include("functions/db_fun.inc.php");
+include("../templates/admin/header.php");
+include("../includes/db.inc.php");
+include("../templates/inside_header.php");
+include("../functions/fun.inc.php");
+include("../functions/db_fun.inc.php");
 
 // Check if user is logged in
 is_logged_in('voter');
@@ -33,14 +33,14 @@ is_logged_in('voter');
 						</thead>
 						<?php
 						$results = retrieve_results_per_category($vote['id']);
-						foreach ($results as $index => $result) { ?>
+						foreach ($results as $index_inner => $result) { ?>
 							<tbody>
 							<tr>
 								<td><?php echo $result['party']; ?></td>
 								<td>
 									<img height="150px" width="150px" class="img-responsive img-circle"
 										 alt="candidate photo"
-										 src="media/images/candidates/<?php echo $result['photo_name']; ?>">
+										 src="../media/images/candidates/<?php echo $result['photo_name']; ?>">
 								</td>
 								<td><?php echo $result['candidate_name']; ?></td>
 								<td><?php echo $result['count']; ?></td>
@@ -61,4 +61,4 @@ is_logged_in('voter');
 		</div>
 	</section>
 
-<?php include("templates/footer.php"); ?>
+<?php include("../templates/footer.php"); ?>

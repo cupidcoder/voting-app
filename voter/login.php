@@ -1,8 +1,8 @@
 <?php 
-include("templates/header.php"); 
-include("includes/db.inc.php");
-include("functions/fun.inc.php");
-include("functions/db_fun.inc.php");
+include("../templates/header.php");
+include("../includes/db.inc.php");
+include("../functions/fun.inc.php");
+include("../functions/db_fun.inc.php");
 
 // check if admin is logged in
 is_voter_logged_in();
@@ -59,4 +59,4 @@ if (isset($_POST['vin']) && isset($_POST['pass'])) {
 			</form>
 		</div>
 	</section>
-<?php include("templates/footer.php"); ?>
+<?php include("../templates/footer.php"); ?>
