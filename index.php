@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="assets/css/bootstrap/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="assets/css/reset.css" type="text/css">
     <link rel="stylesheet" href="assets/css/home.css" type="text/css">
-    <link rel="stylesheet" href="assets/css/home.css" type="text/css">
+    <link rel="stylesheet" href="assets/css/queries.css" type="text/css">
 </head>
 <body>
 
@@ -20,16 +20,16 @@
         <nav class="main-nav">
             <p>E-Voting</p>
             <ul>
-                <li><a href="#">Process</a></li>
-                <li><a href="#">Portal</a></li>
-                <li><a href="#">FAQs</a></li>
-                <li><a href="#">About us</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#portal">Portal</a></li>
+                <li><a href="#faqs">FAQs</a></li>
+                <li><a href="#information">About us</a></li>
             </ul>
         </nav>
         <div class="hero-text">
             <h1>Convenient, Secure and Transparent</h1>
-            <a class="btn btn-full" href="#">Access voting portal</a>
-            <a class="btn btn-ghost" href="#">Get registered</a>
+            <a class="btn btn-full" href="#portal">Access voting portal</a>
+            <a class="btn btn-ghost" href="#process">Get registered</a>
         </div>
     </header>
 <!--End of Hero header-->
@@ -37,7 +37,7 @@
 <!--Process Section-->
     <section class="process">
         <div class="container">
-            <h2>Process</h2>
+            <h2 id="process">Process</h2>
         </div>
         <div class="container">
             <div class="row step">
@@ -69,7 +69,7 @@
 <!--End of Process Section-->
 <!--FAQs Section-->
     <section class="section-faq">
-        <h2>FAQs</h2>
+        <h2 id="faqs">FAQs</h2>
         <div class="container">
             <div class="faq-box">
                 <div class="faq-box-question">
@@ -96,14 +96,14 @@
 <!--End of FAQs Section-->
 <!--Portal Section-->
     <section class="section-portal">
-        <h2>PORTAL</h2>
+        <h2 id="portal">PORTAL</h2>
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <a class="btn btn-full" href="admin">Go to Admin Portal</a>
+                    <a class="btn btn-full portal-btn" href="admin">Go to Admin Portal</a>
                 </div>
                 <div class="col-md-6">
-                    <a class="btn btn-full" href="voter">Go to Voting Portal</a>
+                    <a class="btn btn-full portal-btn" href="voter">Go to Voting Portal</a>
                     <div class="forgot-password">
                         <small>Forgot your login credentials? Enter your email below</small>
                         <input type="email" id="email" required>
@@ -120,7 +120,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <h2>ABOUT US</h2>
+                    <h2 id="information">ABOUT US</h2>
                     <div class="about-us">
                         <p>A good voting system is fair, transparent, independent, stable and accountable. We strive to ensure your votes be likewise</p>
                     </div>

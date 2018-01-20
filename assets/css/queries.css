@@ -1,0 +1,82 @@
+/* Media queries up to 1257px */
+@media only screen and (max-width: 1257px) {
+    h1 {  font-size: 220%; }
+    .hero-text { width: 90%; }
+    h2 { font-size: 180%;}
+}
+
+/*Media queries up to 991px*/
+@media only screen and (max-width: 991px) {
+    h1 {  font-size: 200%; }
+    .hero-text { width: 90%; }
+    .step-icon { margin-bottom: 30px; }
+    .portal-btn { width: 70%; }
+    .forgot-password { padding-left: 25%;  }
+    .contact-us { padding-left: 10%; }
+    h2 { font-size: 160%; }
+}
+
+/* Media queries up to 899px */
+@media only screen and (max-width: 899px) {
+    h1 {  font-size: 180%; }
+    .hero-text { width: 90%; }
+    h2 { font-size: 140%;}
+}
+
+/* Media queries up to 811px */
+@media only screen and (max-width: 811px) {
+    h1 {  font-size: 160%; }
+    .hero-text { width: 95%; }
+    h2 { font-size: 120%; }
+}
+
+/* Media queries up to 740px */
+@media only screen and (max-width: 740px) {
+    h1 {  font-size: 150%; }
+    .hero-text {
+        width: 95%;
+        left: 5%;
+        top: 65%;
+    }
+    h2 { font-size: 110%;}
+}
+
+/* Media queries up to 644px */
+@media only screen and (max-width: 644px) {
+    h1 { font-size: 130%;}
+    .hero-text {
+        width: 100%
+        left: 1%;
+    }
+    h2 { font-size: 90%;}
+}
+
+/* Media queries up to 560px */
+@media only screen and (max-width: 560px) {
+    h1 { font-size: 130%;}
+    .hero-text {
+        width: 100%
+    left: 1%;
+    }
+    h2 { font-size: 90%;}
+}
+
+/* Media queries up to 540px */
+@media only screen and (max-width: 540px) {
+    h1 { font-size: 130%;}
+    .hero-text {
+        width: 100%
+    left: 1%;
+    }
+    h2 { font-size: 90%;}
+    .main-nav ul {
+        float: none;
+    }
+}
+
+/* Media queries up to 419px */
+@media only screen and (max-width: 419px) {
+    .main-nav ul li {
+        display: block;
+    }
+}
