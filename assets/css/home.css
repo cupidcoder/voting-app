@@ -13,7 +13,6 @@ html {
     font-size: 20px;
     font-family: 'Lato', monospace, sans-serif;
     color: #333;
-    font-weight: 300;
     text-rendering: optimizeLegibility;
 }
 
@@ -240,10 +239,11 @@ h1 {
     outline: none;
 }
 
-.forgot-pass-info {
+#forgot-pass-info {
     display: block;
     font-size: 80%;
     text-align: center;
+    color: #18AC18;
 }
 
 /******************************
@@ -266,6 +266,7 @@ h1 {
 
 .contact-us i {
     padding-left: 8px;
+    display: block;
 }
 /******************************
     FOOTER

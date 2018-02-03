@@ -60,5 +60,3 @@ is_logged_in('voter');
 			?>
 		</div>
 	</section>
-
-<?php include("../templates/footer.php"); ?>

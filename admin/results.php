@@ -60,5 +60,3 @@ is_logged_in('admin_user');
             ?>
         </div>
     </section>
-
-<?php include("../templates/admin/footer.php"); ?>

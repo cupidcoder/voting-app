@@ -1,4 +1,4 @@
-<?php 
+<?php
 include("../templates/admin/header.php"); 
 include("../includes/db.inc.php");		
 include("../templates/admin/inside_header.php");
@@ -79,7 +79,14 @@ is_logged_in('admin_user');
 								</div>
 							</div><div class="form-group">
 								<label for="category" class="col-sm-2 control-label">Category </label>
-								<div class="col-sm-10"><input class="form-control" type="text" name="category" id="category" placeholder="enter poll category">
+								<div class="col-sm-10">
+									<select class="form-control" name="category" id="category">
+										<option value="Chairman" selected>Chairman</option>
+										<option value="Secretary">Secretary</option>
+										<option value="Councillor">Councillor</option>
+										<option value="Treasurer">Treasurer</option>
+									</select>
+<!--									<input class="form-control" type="text" name="category" id="category" placeholder="enter poll category">-->
 								</div>
 							</div>
 							<div class="form-group">
@@ -156,4 +163,3 @@ is_logged_in('admin_user');
 		</div>	<!-- End of Container class-->
 		<!-- End of placeholder for retrieving created votes from the database -->
 	</section>
-<?php include("../templates/admin/footer.php"); ?>

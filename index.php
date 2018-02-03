@@ -100,15 +100,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <a class="btn btn-full portal-btn" href="admin">Go to Admin Portal</a>
+                    <a class="btn btn-full portal-btn" href="admin" target="_blank">Go to Admin Portal</a>
                 </div>
                 <div class="col-md-6">
-                    <a class="btn btn-full portal-btn" href="voter">Go to Voting Portal</a>
+                    <a class="btn btn-full portal-btn" href="voter" target="_blank">Go to Voting Portal</a>
                     <div class="forgot-password">
                         <small>Forgot your login credentials? Enter your email below</small>
                         <input type="email" id="email" required>
-                        <button class="btn btn-ghost" type="button">submit</button>
-                        <span class="forgot-pass-info"></span>
+                        <button class="btn btn-ghost" type="button" id="email-reset-btn">submit</button>
+                        <span id="forgot-pass-info"></span>
                     </div>
                 </div>
             </div>
@@ -129,8 +129,8 @@
                     <h2>CONTACT US</h2>
                     <div class="contact-us">
                         <address>
-                            <i class="fa fa-envelope-o icon-small"></i>   <span>hello@e-voting.ng</span>
-                            <i class="fa fa-mobile icon-small"></i>  <span>2347064426677</span>
+                            <i class="fa fa-envelope-o icon-small"></i>   <span>hello@dummyemail.com</span>
+                            <i class="fa fa-mobile icon-small"></i>  <span>2348000000000</span>
                         </address>
                     </div>
                 </div>

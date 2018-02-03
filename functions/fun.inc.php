@@ -60,7 +60,7 @@ function send_new_mail($id,$email_address, $firstname, $lastname) {
 		$mail->isHTML(true);                                  // Set email format to HTML
 		$mail->Subject = 'Verify Your Account';
 		$mail->Body    = "Hello $firstname, kindly visit the link below to complete your registration.<br>";
-		$mail->Body   .= "<strong>Please open link in a browser</strong><br><br>";
+		$mail->Body   .= "<strong>Please open the link in a desktop browser</strong><br><br>";
 		$mail->Body   .= "<a href='$link'>Verify your account</a><br><br>";
 		$mail->Body   .= "<i>Ensure you secure your Voter Identification Number and Password at all times</i>";
 		
@@ -92,4 +92,39 @@ function pass_generator($length = 32) {
 	return $randstr;
 }
 
-?>
+// 7. Send new password to voter
+function send_new_password($email_address, $firstname, $pass) {
+	$mail = new PHPMailer(true);
+	try {
+		//Server settings
+		//$mail->SMTPDebug = 2;                                 // Enable verbose debug output
+		$mail->isSMTP();                                    // Set mailer to use SMTP
+		$mail->Host = 'chukume.name.ng';  // Specify main and backup SMTP servers
+		$mail->SMTPAuth = true;                               // Enable SMTP authentication
+		$mail->Username = 'no-reply@voting-app.chukume.name.ng';                 // SMTP username
+		$mail->Password = '#(tV{Uu{)W=&';                           // SMTP password
+		$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+		$mail->Port = 587;                                    // TCP port to connect to /465, 25
+
+		//Recipients
+		$mail->setFrom('no-reply@voting-app.chukume.name.ng', 'E-Voting App');
+		$mail->addAddress($email_address, $firstname);     // Add a recipient
+
+
+		//Content
+		$mail->isHTML(true);                                  // Set email format to HTML
+		$mail->Subject = 'Verify Your Account';
+		$mail->Body    = "Hello $firstname,<br><br>";
+		$mail->Body   .= "Please find your new password below: <br><br>";
+		$mail->Body   .= "<b>{$pass}</b><br><br>";
+		$mail->Body   .= "<i>Warm Regards</i>";
+
+		$mail->send();
+		//echo 'Message has been sent';
+	}
+
+	catch (Exception $e) {
+		echo 'Message could not be sent.';
+		echo 'Mailer Error: ' . $mail->ErrorInfo;
+	}
+}

@@ -19,7 +19,7 @@ $user_details = retrieve_voters($username);
 			<div class="row">
 			  <div class="col-sm-12">
 			    <div class="thumbnail voter-picture-background">
-			      <img src="../media/images/voters/<?php echo $user_details['photo_name']; ?>" class="img-responsive img-circle">
+			      <img src="../media/images/voters/<?php echo rawurlencode($user_details['photo_name']); ?>" height="150px" width="150px" class="img-responsive img-circle">
 			      <div class="caption">
 			        <h3 class="text-center">Welcome to your Dashboard, <strong><?php echo $user_details['firstname'];?></strong></h3>
 			      </div>

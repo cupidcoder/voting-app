@@ -28,8 +28,8 @@ is_logged_in('voter');
 			}
 		?>
 		
-		<?php 
-		if (!empty(retrieve_vote_categories()) && vote_casted_status()) { ?>
+		<?php
+		if (!empty(retrieve_vote_categories()) && vote_casted_status() == true) { ?>
 			<!-- When there are votes but voter has already casted vote -->
 		 		<div id="welcome_text">
 					<h3>Your vote has been received, please check back during next polling period</h3>
@@ -40,7 +40,7 @@ is_logged_in('voter');
 		
 		<!-- When there are votes and user is yet to cast vote, display votes -->
 		<?php 
-		if (!empty(retrieve_vote_categories()) && !vote_casted_status()) { ?>
+		if (!empty(retrieve_vote_categories()) && vote_casted_status() == false ) { ?>
 				
 				<div class="container">
 					<h3 class="text-center">Cast Your Vote Below</h3>
@@ -68,7 +68,7 @@ is_logged_in('voter');
 									<tr>
 										<!--<td><input type="hidden" name="poll_id" value="<?php /*echo $poll['id'];*/?>"></td>-->
 										<td>
-											<img height="150px" width="150px" class="img-responsive img-circle" alt="candidate photo" src="media/images/candidates/<?php echo $poll['photo_name'];?>">
+											<img height="150px" width="150px" class="img-responsive img-circle" alt="candidate photo" src="../media/images/candidates/<?php echo $poll['photo_name'];?>">
 										</td>
 										<td><?php echo $poll['party'];?></td>
 										<td><?php echo $poll['candidate_name'];?></td>
@@ -87,27 +87,31 @@ is_logged_in('voter');
 				<?php		
 					}
 				?>
-                        <input type="submit" value="Finish">
+                        <input type="submit" name="submit" value="Finish">
                     </form>
                     <div class="info-text">
                         <small><i>Please ensure you make all your selections before clicking 'finish'. Once submitted, your selections cannot be modified</i></small>
                     </div>
 				</div> <!-- End of Container -->
-		<?php 
+		<?php
 			}
 		?>
 	</section>
 
     <!-- Vote counter is Handled here -->
 <?php
-if (isset($_POST)) {
-    // Go through all items in the array and record each selection
+if (isset($_POST['submit'])) {
+	// Go through all items in the array and record each selection
     foreach($_POST as $category => $poll_id) {
-        vote_counter($poll_id);
+		if ($category != 'submit') {
+			vote_counter($poll_id);
+		}
     }
 
-    // Then change vote_casted_status for voter to 1
-    set_vote_casted();
+	// Change vote_casted_status for voter to 1
+	set_vote_casted();
+
+	// Redirect to results.php
+	redirect_url('results.php');
 }
 ?>
-<?php include("../templates/footer.php"); ?>
